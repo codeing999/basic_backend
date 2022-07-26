@@ -1,0 +1,13 @@
+# Directory Structure
+
+.
+├── app.js  //서버 열기
+├── routes
+│   ├── index.js    //메인 페이지 관련 미들웨어
+│   ├── comments.js     //코멘트 관련 미들웨어
+│   └── posts.js        //노트 관련 미들웨어
+├── schemas
+│   ├── index.js    //몽고DB랑 연결 담당
+│   ├── comment.js  //코멘트 테이블 스키마 작성
+│   └── post.js     //노트 테이블 스키마 작성
+└── views       //html 파일들
