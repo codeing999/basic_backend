@@ -12,5 +12,6 @@
 | Method, URL | Description | Method | request | response |
 |:------------|:------------|:-------|:--------|:---------|
 | POST /comment/:noteId | 댓글 작성
-| PUT /comment/:commentId | 댓글 수정
-| DELETE /comment/:commentId | 댓글 삭제
+| GET /comment/:noteId | 댓글 목록 조회
+| PUT /comment/:noteId/:commentId | 댓글 수정
+| DELETE /comment/:noteId/:commentId | 댓글 삭제

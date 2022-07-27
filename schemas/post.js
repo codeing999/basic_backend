@@ -11,6 +11,11 @@ const noteSchema = new mongoose.Schema({
     required: true,
     unique: false
   },
+  pw: {
+    type: String,
+    required: true,
+    unique: false
+  },
   title: {
     type:String, 
     required: true,
@@ -24,7 +29,7 @@ const noteSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     required: true,
-    unique: false
+    unique: false,
   }
 });
 

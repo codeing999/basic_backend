@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express"); //import express from "express"랑 같은 구분. 왼쪽이 변수인것도 같음.
 const connect = require("./schemas"); //index.js는 명시 안해줘도 안적으면 그걸 찾음.
 const app = express();
 const port = 3000;
@@ -22,9 +22,10 @@ app.use("/comment", commentRouter);
 
 app.get("/", (req, res) => {
     res.send("hello");
+    next(); //next도 항상 써주는게 좋다. try catch 해서 catch에 .
 });
 
 
-app.listen(port, () => {
+app.listen(port, () => {    //app.listen은 맨밑에 쓰는게 관행. 
     console.log(port, "서버 켜짐");
 });

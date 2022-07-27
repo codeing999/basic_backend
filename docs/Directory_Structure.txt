@@ -10,4 +10,4 @@
 │   ├── index.js    //몽고DB랑 연결 담당
 │   ├── comment.js  //코멘트 테이블 스키마 작성
 │   └── post.js     //노트 테이블 스키마 작성
-└── views       //html 파일들
+└── static       //html, css 파일들. 만약 만든다면. 
