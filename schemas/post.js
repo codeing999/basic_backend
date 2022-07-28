@@ -33,4 +33,4 @@ const noteSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Note", noteSchema); //모델 이름은 Note로 해서 export. 이걸 routes/posts.js에서 가져다 쓰게할 거.
+module.exports = mongoose.model("Note", noteSchema); 

@@ -15,8 +15,6 @@ router.post("/", async (req, res) => {    //댓글 작성.
 
 router.get("/:noteId", async (req, res)=> {
     const { noteId } = req.params;
-    //const  a = req.body;  //get도 바디값 받아올 수 있긴하네 그냥 되긴되는데 안쓰기록 약속한걸수도. 알아보니까 express.js에선 되는데 프론트엔드에서 어차피 안된다고 함.
-    //console.log(a);
     const comment = await Comment.find( {noteId} ).sort( {createdAt : -1});
     res.json({
         comment,
