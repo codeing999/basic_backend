@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {    //댓글 작성.
     const { noteId, commentId, author, content } = req.body;
+    console.log('d');
     const comment = await Comment.find( {noteId, commentId});
     if (comment.length) {
         return res.status(400).json( { success : false, erroMessage: "이미 있는 데이터입니다."});

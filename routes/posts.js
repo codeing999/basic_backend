@@ -48,7 +48,7 @@ router.put("/:noteId", async (req, res) => {    //많이 바꾸면 put 적게 �
         res.json({ note: putnote });
          
     }else {
-        res.send("없는 데이터       입니다."); 
+        res.send("없는 데이터입니다."); 
     }
     
 });
