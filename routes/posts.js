@@ -3,11 +3,14 @@ const Note = require("../schemas/post.js");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-    const { noteId, author, pw, title, content} = req.body;
-    const note = await Note.find({ noteId }); 
-    if (note.length) {  
-        return res.status(400).json({ success: false, errorMessage: "이미 있는 데이터입니다." });   
-    }   
+    const { author, pw, title, content} = req.body;   
+    const note = await Note.find().sort({noteId: -1}).limit(1);
+    let noteId = 0; 
+    if (note.length) {
+        noteId = note[0].noteId+1;
+    } else {
+        noteId = 1;
+    }
     const createnote = await Note.create({ noteId, author, pw, title, content, createdAt:Date.now() }); 
     
     res.json({ note: createnote });

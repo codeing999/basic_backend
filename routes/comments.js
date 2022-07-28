@@ -3,8 +3,16 @@ const Comment = require("../schemas/comment.js");
 const router = express.Router();
 
 router.post("/", async (req, res) => {    //댓글 작성.
-    const { noteId, commentId, author, content } = req.body;
-    console.log('d');
+    const { noteId, author, content } = req.body;
+
+    const temp = await Comment.find( {noteId:noteId} ).sort({commentId: -1}).limit(1);
+    let commentId = 0; 
+    if (temp.length) {
+        commentId = temp[0].commentId+1;
+    } else {
+        commentId = 1;
+    }
+
     const comment = await Comment.find( {noteId, commentId});
     if (comment.length) {
         return res.status(400).json( { success : false, erroMessage: "이미 있는 데이터입니다."});
@@ -15,7 +23,7 @@ router.post("/", async (req, res) => {    //댓글 작성.
 
 router.get("/:noteId", async (req, res)=> {
     const { noteId } = req.params;
-    const comment = await Comment.find( {noteId} ).sort( {createdAt : -1});
+    const comment = await Comment.find( {noteId} ).sort( {createdAt : -1}).select('-_id author content createdAt');
     res.json({
         comment,
     });
