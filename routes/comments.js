@@ -3,12 +3,12 @@ const Comment = require("../schemas/comment.js");
 const router = express.Router();
 
 router.post("/", async (req, res) => {    //댓글 작성.
-    const { noteId, commentId, author, content, createdAt } = req.body;
+    const { noteId, commentId, author, content } = req.body;
     const comment = await Comment.find( {noteId, commentId});
     if (comment.length) {
         return res.status(400).json( { success : false, erroMessage: "이미 있는 데이터입니다."});
     }
-    const createcomment = await Comment.create( { noteId, commentId, author, content, createdAt});
+    const createcomment = await Comment.create( { noteId, commentId, author, content, createdAt:Date.now()});
     res.json({ comment : createcomment});
 });
 
